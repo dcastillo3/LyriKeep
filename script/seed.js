@@ -2,6 +2,8 @@
 
 const db = require('../server/db')
 const {User} = require('../server/db/models')
+const {Song} = require('../server/db/models')
+const {Section} = require('../server/db/models')
 
 /**
  * Welcome to the seed file! This seed file uses a newer language feature called...
@@ -22,11 +24,24 @@ async function seed () {
   // executed until that promise resolves!
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
+    User.create({email: 'murphy@email.com', password: '123'}),
+    User.create({email: 'admin@email.com', isAdmin: true, password: '123'})
+  ])
+  const songs = await Promise.all([
+    Song.create({title: 'My Song', description: 'My first song', tags: ['first song', 'hiphop'], userId: 3}),
+    Song.create({title: 'My Other Song', description: 'My second song', tags: ['second song', 'hiphop'], userId: 3})
+  ])
+
+  const sections = await Promise.all([
+    Section.create({name: 'Verse 1', songId: 1}),
+    Section.create({name: 'Chorus', songId: 1}),
+    Section.create({name: 'Verse 2', songId: 1}),
   ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
   console.log(`seeded ${users.length} users`)
+  console.log(`seeded ${songs.length} songs`)
+  console.log(`seeded ${sections.length} sections`)
   console.log(`seeded successfully`)
 }
 
@@ -39,7 +54,7 @@ if (module === require.main) {
     console.error(err)
     process.exitCode = 1
   })
-  .finally(() => { // `finally` is like then + catch. It runs no matter what.
+  .then(() => { // `finally` is like then + catch. It runs no matter what.
     console.log('closing db connection')
     db.close()
     console.log('db connection closed')
