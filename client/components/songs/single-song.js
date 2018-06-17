@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchSong} from '../../store'
+import {fetchSong, beatUpdate} from '../../store'
 
 /**
  * COMPONENT
@@ -20,6 +20,8 @@ class SingleSong extends Component {
   render() {
   const email = this.props.email
   const song = this.props.song
+  const userId = this.props.id
+  const beatChange = this.props.beatChange
 
   let songImage = {
     backgroundImage: `url('/images/${song.image}')`
@@ -28,21 +30,32 @@ class SingleSong extends Component {
   return (
     <div className="main single-song">
       <h3>Welcome, {email}</h3>
-            <div className="user-song-container" key={song.id}>
+            <div className="user-song-info" key={song.id}>
               <div className="user-song-image" style={songImage} />
               <div className="user-song-title">{song.title}</div>
               <div className="user-song-description">{song.description}</div>
               <div className="user-song-tags">{song.tags}</div>
             </div>
-            <div className="editor-container">
-                <div className="editor" contentEditable="true">
-                    <div className="bar">
-                        <div className="beat">Beat Text 1</div>
-                        <div className="beat">Beat Text 2</div>
-                        <div className="beat">Beat Text 3</div>
-                        <div className="beat">Beat Text 4</div>
-                    </div>
-                </div>
+            <div className="user-song">
+                {song.sections && song.sections.map(section => {
+                    return (
+                        <div order={section.order} className={`user-section section-${section.id}`} key={section.id}>
+                            {section.bars.map(bar => {
+                                return (
+                                    <div order={bar.order} className={`user-bar bar-${bar.id}`} key={bar.id}>
+                                        {bar.beats.map(beat => {
+                                            let beatId = beat.id;
+                                            let songId = song.id;
+                                            return (
+                                                <input onChange={(event) => beatChange(userId, beatId, songId, event)} className={`user-beat beat-${beat.id}`} name="beat" key={beat.id} order={beat.order} value={beat.lyric} />
+                                            )
+                                        })}
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    )
+                })}
             </div>
     </div>
   )
@@ -63,8 +76,12 @@ const mapState = (state, ownProps) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    fetchSong (userId, songId) {
-      dispatch(fetchSong(userId, songId))
+    fetchSong (userId, song) {
+      dispatch(fetchSong(userId, song))
+    },
+    beatChange (userId, beatId, songId, event) {
+        let lyric = event.target.value
+        dispatch(beatUpdate(userId, beatId, songId, lyric))
     }
   }
 }

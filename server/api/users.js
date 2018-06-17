@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User} = require('../db/models')
+const {User, Beat} = require('../db/models')
 module.exports = router
 
 //Get all users
@@ -30,5 +30,23 @@ router.get('/:userId/songs/:songId', (req, res, next) => {
   
   User.findSongById(userId, songId)
   .then(foundSongs => res.json(foundSongs))
+  .catch(next)
+})
+
+//Api for routes
+router.put('/lyric/:beatId', (req, res, next) => {
+  let beatId = req.params.beatId
+  console.log('**********', req.body)
+  let lyric = req.body.lyric
+
+  Beat.findById(beatId)
+  .then(foundBeat => {
+    return foundBeat.update({
+      lyric
+    })
+  })
+  .then(updatedBeat => {
+    res.json(updatedBeat.dataValues)
+  })
   .catch(next)
 })

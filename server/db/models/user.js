@@ -3,6 +3,8 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 const Song = require('./song')
 const Section = require('./section')
+const Bar = require('./bar')
+const Beat = require('./beat')
 
 const User = db.define('user', {
   email: {
@@ -65,7 +67,13 @@ User.findSongById = function (userId, songId) {
       id: songId
     },
     include: {
-      model: Section
+      model: Section,
+      include: {
+        model: Bar,
+        include: {
+          model: Beat
+        }
+      }
     }
   })
 }
