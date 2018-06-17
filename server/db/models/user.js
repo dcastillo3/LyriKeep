@@ -1,12 +1,19 @@
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
+const Song = require('./song')
+const Section = require('./section')
+const Bar = require('./bar')
+const Beat = require('./beat')
 
 const User = db.define('user', {
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
@@ -15,6 +22,10 @@ const User = db.define('user', {
     get() {
       return () => this.getDataValue('password')
     }
+  },
+  isAdmin: {
+    type: Sequelize.STRING,
+    defaultValue: false
   },
   salt: {
     type: Sequelize.STRING,
@@ -41,6 +52,32 @@ User.prototype.correctPassword = function (candidatePwd) {
 /**
  * classMethods
  */
+User.findAllSongs = function (userId) {
+  return Song.findAll({
+    where: {
+      userId
+    }
+  })
+}
+
+User.findSongById = function (userId, songId) {
+  return Song.findOne({
+    where: {
+      userId,
+      id: songId
+    },
+    include: {
+      model: Section,
+      include: {
+        model: Bar,
+        include: {
+          model: Beat
+        }
+      }
+    }
+  })
+}
+
 User.generateSalt = function () {
   return crypto.randomBytes(16).toString('base64')
 }

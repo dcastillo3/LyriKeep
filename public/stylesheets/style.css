@@ -1,0 +1,62 @@
+/* ------------ Font Imports ------------ */
+
+
+/* ------------ Default Styles ------------ */
+body {
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+label {
+  display: block;
+}
+
+nav a {
+  display: inline-block;
+  margin: 1em;
+}
+
+form div {
+  margin: 1em;
+  display: inline-block;
+}
+
+
+/* ------------ User Home ------------ */
+.user-home .user-song-image {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ------------ Single Song ------------ */
+.single-song .user-song-image {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* ------------ Single Song ------------ */
+.editor {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.beat {
+  width: calc(25% - 20px);
+  margin: 10px;
+  background: #efefef;
+}
