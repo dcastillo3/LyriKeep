@@ -37,13 +37,13 @@ class SingleSong extends Component {
               <div className="user-song-tags">{song.tags}</div>
             </div>
             <div className="user-song">
-                {song.sections && song.sections.map(section => {
+                {song.sections && song.sections.sort((section1, section2) => section1.order - section2.order).map(section => {
                     return (
                         <div order={section.order} className={`user-section section-${section.id}`} key={section.id}>
-                            {section.bars.map(bar => {
+                            {section.bars.sort((bar1, bar2) => bar1.order - bar2.order).map(bar => {
                                 return (
                                     <div order={bar.order} className={`user-bar bar-${bar.id}`} key={bar.id}>
-                                        {bar.beats.map(beat => {
+                                        {bar.beats.sort((beat1, beat2) => beat1.order - beat2.order).map(beat => {
                                             let beatId = beat.id;
                                             let songId = song.id;
                                             return (
