@@ -36,8 +36,7 @@ router.get('/:userId/songs/:songId', (req, res, next) => {
 //Api for routes
 router.put('/lyric/:beatId', (req, res, next) => {
   let beatId = req.params.beatId
-  console.log('**********', req.body)
-  let lyric = req.body.lyric
+  let lyric = req.body.lyrics
 
   Beat.findById(beatId)
   .then(foundBeat => {

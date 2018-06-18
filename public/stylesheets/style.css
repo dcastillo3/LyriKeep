@@ -4,10 +4,14 @@
 /* ------------ Default Styles ------------ */
 body {
   font-family: sans-serif;
+  height: 100vh;
+  background: #252525;
+  color: #fff;
 }
 
 a {
   text-decoration: none;
+  color: #fff;
 }
 
 label {
@@ -22,6 +26,11 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 
@@ -48,15 +57,50 @@ form div {
   flex-wrap: wrap;
 }
 
-.bar {
+.single-song .user-song-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: #848484;
+}
+
+.single-song .user-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-song .user-bar-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.beat {
-  width: calc(25% - 20px);
+.single-song .user-bar-name {
+  flex: 1;
+}
+
+.single-song .user-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex: 20
+}
+
+.single-song .user-beat {
   margin: 10px;
   background: #efefef;
+  width: 100%;
+  padding: 10px;
+}
+
+.single-song .user-section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-song .user-beat-container {
+  flex: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
