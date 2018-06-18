@@ -23,7 +23,7 @@ class UserHome extends Component {
 
   return (
     <div className="main user-home">
-      <h3>Welcome, {email}</h3>
+      <h3 className="user-title">My Songs</h3>
       <div className="user-songs">
         {songs.map(song => {
           let songImage = {
@@ -32,11 +32,15 @@ class UserHome extends Component {
           return (
             <div className="user-song-container" key={song.id}>
               <Link to={`/user/song/${song.id}`}>
-              <div className="user-song-image" style={songImage} />
-              <div className="user-song-title">{song.title}</div>
+                <div className="user-song-image" style={songImage} />
               </Link>
-              <div className="user-song-description">{song.description}</div>
-              <div className="user-song-tags">{song.tags}</div>
+              <div className="user-meta-container">
+                <Link to={`/user/song/${song.id}`}>
+                  <div className="user-song-title">{song.title}</div>
+                </Link>
+                <div className="user-song-description">{song.description}</div>
+              </div>
+              <div className="user-song-tags"><span className="user-song-tags-title">Tags:</span> {song.tags}</div>
             </div>
           )
         })}

@@ -14,6 +14,7 @@ class Home extends Component {
   }
 
   render() {
+    const {isLoggedIn} = this.props
 
   return (
     <div className="home">
@@ -22,8 +23,11 @@ class Home extends Component {
             <div className="home-image-overlay">
                 <div className="home-text-container">
                     <div className="home-title">Write Your Own Story</div>
-                    <div className="home-description">Join our community of musicians, poets, rappers and various lyrical artists. Organize your content and write your creativity into existence.</div>
-                    <Link className="home-signup-button" to="/login">Sign Up For Free</Link>
+                    <div className="home-description">Join our community of musicians, poets, rappers and various lyrical artists.<br />Organize your content and speak your creativity into existence.</div>
+                    {isLoggedIn ? 
+                      <Link className="home-signup-button" to="/user">View My Songs</Link> :
+                      <Link className="home-signup-button" to="/login">Sign Up For Free</Link> 
+                      }
                 </div>
             </div>
         </div>
@@ -38,6 +42,7 @@ class Home extends Component {
  */
 const mapState = (state) => {
   return {
+    isLoggedIn: !!state.user.id
   }
 }
 

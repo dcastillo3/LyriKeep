@@ -32,11 +32,12 @@ class SingleSong extends Component {
 
   return (
     <div className="main single-song">
-      <h3>Welcome, {email}</h3>
             <div className="user-song-info" key={song.id}>
               <div className="user-song-image" style={songImage} />
-              <div className="user-song-title">{song.title}</div>
-              <div className="user-song-description">{song.description}</div>
+              <div className="user-meta-container">
+                <div className="user-song-title">{song.title}</div>
+                <div className="user-song-description">{song.description}</div>
+              </div>
               <div className="user-song-tags">{song.tags}</div>
             </div>
             <div className="user-song-container">
@@ -70,10 +71,13 @@ class SingleSong extends Component {
                     )
                 })}
             </div>
-            <div className="lyric-suggestions">
-              {suggestions.map(suggestion => (
-                <div key={suggestion.word + suggestion.score} className="lyric-suggestion">{suggestion.word}</div>
-              ))}
+            <div className="lyric-suggestions-container">
+              <div className="lyric-suggestions-title">Suggestions</div>
+              <div className="lyric-suggestions">
+                {suggestions.map(suggestion => (
+                  <div key={suggestion.word + suggestion.score} className="lyric-suggestion">{suggestion.word}</div>
+                ))}
+              </div>
             </div>
           </div>
     </div>
