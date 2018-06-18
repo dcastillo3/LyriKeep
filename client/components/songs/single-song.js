@@ -38,7 +38,7 @@ class SingleSong extends Component {
                 <div className="user-song-title">{song.title}</div>
                 <div className="user-song-description">{song.description}</div>
               </div>
-              <div className="user-song-tags">{song.tags}</div>
+              <div className="user-song-tags"><span className="user-song-tags-title">Tags: </span>{song.tags}</div>
             </div>
             <div className="user-song-container">
             <div className="user-song">

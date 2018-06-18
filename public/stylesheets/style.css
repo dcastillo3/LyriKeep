@@ -233,8 +233,30 @@ span.user-song-tags-title {
   flex-wrap: wrap;
 }
 
+.single-song .user-song-title {
+  font-weight: 600;
+  letter-spacing: .7px;
+}
+
+.single-song .user-song-description {
+  font-size: 13px;
+  letter-spacing: .7px;
+  font-weight: 300;
+  color: #424242;
+}
+
+.single-song span.user-song-tags-title {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .9px;
+}
+
 .single-song .user-song-tags {
   margin-left: auto;
+  font-size: 13px;
+  letter-spacing: .7px;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .single-song .user-meta-container {
@@ -263,8 +285,9 @@ span.user-song-tags-title {
 
 .single-song .user-section-name {
   padding: 10px;
-  background: #e9e5ff;
+  background: #2589de;
   margin-top: 20px;
+  color: #fff;
 }
 
 .single-song .user-bar-container {
