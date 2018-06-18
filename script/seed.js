@@ -37,7 +37,6 @@ async function seed () {
   const sections = await Promise.all([
     Section.create({order: 1, name: 'Verse 1', songId: 1}),
     Section.create({order: 2, name: 'Chorus', songId: 1}),
-    Section.create({order: 3, name: 'Verse 2', songId: 1})
   ])
 
   const bars = await Promise.all([

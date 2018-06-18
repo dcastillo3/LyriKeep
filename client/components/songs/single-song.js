@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchSong, beatUpdate, fetchSuggestions} from '../../store'
+import {fetchSong, beatUpdate, fetchSuggestions, getSuggestions} from '../../store'
 
 /**
  * COMPONENT
@@ -15,6 +15,7 @@ class SingleSong extends Component {
     const userId = this.props.id
     const songId = this.props.songId
     this.props.fetchSong(userId, songId)
+    this.props.initialSuggestions()
   }
 
   render() {
@@ -107,6 +108,9 @@ const mapDispatch = (dispatch) => {
       let splitLyrics = lyrics.split(' ')
       let lyric = splitLyrics[splitLyrics.length - 1]
       dispatch(fetchSuggestions(lyric))
+    },
+    initialSuggestions() {
+      dispatch(getSuggestions())
     }
   }
 }

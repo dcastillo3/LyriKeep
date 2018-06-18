@@ -14,10 +14,13 @@ const defaultSuggestions = []
 /**
  * ACTION CREATORS
  */
-const getSuggestions = suggestions => ({
+export const getSuggestions = suggestionsObj => {
+  let suggestions = suggestionsObj ? suggestionsObj : []
+  return ({
   type: GET_SUGGESTIONS,
   suggestions
 })
+}
 
 /**
  * THUNK CREATORS

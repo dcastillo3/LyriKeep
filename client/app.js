@@ -1,4 +1,5 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
 
 import {Navbar} from './components'
 import Routes from './routes'
@@ -6,11 +7,13 @@ import Routes from './routes'
 
 const App = () => {
   return (
-    <div>
+    <div className="app-container">
       <Navbar />
-      <Routes />
+      <div className="main-container">
+        <Routes />
+      </div>
     </div>
   )
 }
 
-export default App
+export default withRouter(App)

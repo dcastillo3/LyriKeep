@@ -1,12 +1,13 @@
 /* ------------ Font Imports ------------ */
-
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 /* ------------ Default Styles ------------ */
 body {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
   height: 100vh;
   background: #252525;
   color: #fff;
+  margin: 0;
 }
 
 a {
@@ -31,8 +32,92 @@ form div {
 .main {
   max-width: 1200px;
   margin: 0 auto;
+  background: #6b6a6a;
+  padding: 40px;
 }
 
+
+/* ------------ Header ------------ */
+.header {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  color: #000;
+  justify-content: space-between;
+}
+
+.header a {
+  color: #000;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin-right: auto;
+}
+
+.header-title {
+  margin: 0;
+}
+
+
+/* ------------ Home (Landing) ------------ */
+.home-landing-container {
+  position: relative;
+}
+
+.home-text-container {
+  max-width: 605px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 7em;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 132px;
+  letter-spacing: 1px;
+}
+
+.home-description {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.home-signup-button {
+  padding: 15px 30px;
+  background: #fff;
+  color: #000;
+  text-transform: uppercase;
+  margin-top: 50px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.home-image-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-bg-image {
+  background: url(../images/landing.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -300px;
+  height: 80vh;
+  width: 100vw;
+}
 
 /* ------------ User Home ------------ */
 .user-home .user-song-image {
@@ -61,6 +146,7 @@ form div {
   display: flex;
   flex-wrap: wrap;
   background: #848484;
+  flex-direction: column;
 }
 
 .single-song .user-section {
@@ -76,21 +162,22 @@ form div {
 }
 
 .single-song .user-bar-name {
-  flex: 1;
 }
 
 .single-song .user-bar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  flex: 20
+  padding: 8px 10px;
+  margin: 5px;
+  background: #c1c1c1;
 }
 
 .single-song .user-beat {
-  margin: 10px;
   background: #efefef;
   width: 100%;
-  padding: 10px;
+  padding: 0px;
+  border: 0px;
 }
 
 .single-song .user-section-container {
@@ -103,4 +190,11 @@ form div {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.single-song button.user-beat-button {
+  border: none;
+  background: #c12d2d;
+  color: #fff;
+  padding: 7px 11px;
 }
