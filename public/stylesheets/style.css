@@ -357,6 +357,7 @@ span.user-song-tags-title {
   padding: 10px;
   background: #fff;
   font-size: 12px;
+  border-left: solid 1px #b7b7b7;
 }
 
 .single-song .lyric-suggestions-title {
