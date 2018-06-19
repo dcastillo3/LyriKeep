@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchSong, beatUpdate, fetchSuggestions, getSuggestions} from '../../store'
+import {fetchSong, beatUpdate, fetchSuggestions, getSuggestions, createBar} from '../../store'
 
 /**
  * COMPONENT
@@ -22,9 +22,11 @@ class SingleSong extends Component {
   const email = this.props.email
   const song = this.props.song
   const userId = this.props.id
+  const songId = song.id;
   const beatChange = this.props.beatChange
   const suggestions = this.props.suggestions
   const getSuggestions = this.props.getSuggestions
+  const addBar = this.props.addBar
 
   let songImage = {
     backgroundImage: `url('/images/${song.image}')`
@@ -47,14 +49,13 @@ class SingleSong extends Component {
                     <div key={section.id} className="user-section-container">
                       <div className="user-section-name">{section.name}</div>
                         <div order={section.order} className={`user-section section-${section.id}`} key={section.id}>
-                            {section.bars.sort((bar1, bar2) => bar1.order - bar2.order).map(bar => {
+                            {section.bars.sort((bar1, bar2) => bar1.order - bar2.order).map((bar, index) => {
                                 return (
                                   <div key={bar.id} className="user-bar-container">
                                     <div className="user-bar-name">{bar.order}</div>
                                       <div order={bar.order} className={`user-bar bar-${bar.id}`}>
                                         {bar.beats.sort((beat1, beat2) => beat1.order - beat2.order).map(beat => {
                                             let beatId = beat.id;
-                                            let songId = song.id;
                                             return (
                                                 <div key={beat.id} className="user-beat-container">
                                                   <input onChange={(event) => beatChange(userId, beatId, songId, event)} className={`user-beat beat-${beat.id}`} name="beat" order={beat.order} value={beat.lyric} />
@@ -62,6 +63,7 @@ class SingleSong extends Component {
                                                 </div>
                                             )
                                         })}
+                                      {section.bars[index] === section.bars[section.bars.length - 1] && <button onClick={() => addBar(userId, songId, section.id, section.bars.length + 1)} type="submit" className="user-add-bar">+</button>}
                                     </div>
                                   </div>
                                 )
@@ -115,6 +117,10 @@ const mapDispatch = (dispatch) => {
     },
     initialSuggestions() {
       dispatch(getSuggestions())
+    },
+    addBar(userId, songId, sectionId, lastBarOrder) {
+      console.log(lastBarOrder)
+      dispatch(createBar(userId, songId, sectionId, lastBarOrder))
     }
   }
 }

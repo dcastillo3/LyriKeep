@@ -34,6 +34,15 @@ form div {
   display: inline-block;
 }
 
+button:focus {
+  outline: none;
+}
+
+input:focus {
+  outline-offset: 0;
+  outline: #2589de auto 3px;
+}
+
 button:hover {
   cursor: pointer;
 }
@@ -271,10 +280,14 @@ span.user-song-tags-title {
   flex-wrap: wrap;
 }
 
+.single-song .user-song {
+  width: 79%;
+}
+
 .single-song .user-song-container {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
 }
 
@@ -309,9 +322,10 @@ span.user-song-tags-title {
   flex-wrap: wrap;
   padding: 8px 10px;
   background: #ffffff;
-  width: 94%;
+  width: 92.6%;
   padding: 20px;
   border-bottom: 1px solid #b7b7b7;
+  position: relative;
 }
 
 .single-song .user-beat {
@@ -334,6 +348,27 @@ span.user-song-tags-title {
   flex-direction: column;
 }
 
+.single-song .user-add-bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  padding: 2px 3px 4px 2px;
+  margin: 20px 10px;
+  font-weight: 100;
+  line-height: 11px;
+  font-size: 22px;
+  color: #909090;
+  text-align: center;
+  transition: .3s ease-in-out;
+  border: 1px solid;
+}
+
+.single-song .user-add-bar:hover {
+  color: #fff;
+  background: #e21111;
+}
+
 .single-song button.user-beat-button {
   border: none;
   background: #424242;
@@ -350,14 +385,13 @@ span.user-song-tags-title {
 }
 
 .single-song .lyric-suggestions-container {
-  position: absolute;
-  right: -220px;
-  top: 20px;
   width: 180px;
   padding: 10px;
   background: #fff;
   font-size: 12px;
   border-left: solid 1px #b7b7b7;
+  margin: 20px 0px 0px 20px;
+  flex: auto;
 }
 
 .single-song .lyric-suggestions-title {

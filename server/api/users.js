@@ -49,3 +49,15 @@ router.put('/lyric/:beatId', (req, res, next) => {
   })
   .catch(next)
 })
+
+//Api for creating bars
+router.post('/bar', (req, res, next) => {
+  let sectionId = req.body.sectionId
+  let order = req.body.lastBarOrder
+
+  User.createBar(sectionId, order)
+  .then(() => {
+    res.sendStatus(200)
+  })
+  .catch(next)
+})

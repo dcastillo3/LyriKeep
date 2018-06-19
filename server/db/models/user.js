@@ -31,7 +31,7 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     // Making `.salt` act like a function hides it when serializing to JSON.
     // This is a hack to get around Sequelize's lack of a "private" option.
-    get () {
+    get() {
       return () => this.getDataValue('salt')
     }
   },
@@ -76,6 +76,24 @@ User.findSongById = function (userId, songId) {
       }
     }
   })
+}
+
+User.createBar = function (sectionId, order) {
+  return Bar.create({
+      order,
+      sectionId
+    })
+    .then(createdBar => {
+      let barId = createdBar.dataValues.id;
+      let idx = 1;
+      for (let i = idx; i <= 4; i++) {
+        Beat.create({
+          scheme: 'none',
+          order: idx,
+          barId
+        })
+      }
+    })
 }
 
 User.generateSalt = function () {

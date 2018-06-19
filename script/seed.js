@@ -71,7 +71,7 @@ async function seed () {
 
     Beat.create({order: 1, lyric: 'Glasses on', barId: 4}),
     Beat.create({order: 2, lyric: 'feeling studious', scheme: 'C', barId: 4}),
-    Beat.create({order: 3, lyric: 'reminiscing on challenges', barId: 4}),
+    Beat.create({order: 3, lyric: 'reminiscing challenges', barId: 4}),
     Beat.create({order: 4, lyric: 'stupidness', scheme: 'C', barId: 4})
   ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator

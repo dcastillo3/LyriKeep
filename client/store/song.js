@@ -38,6 +38,15 @@ export const beatUpdate = (userId, beatId, songId, lyrics) => {
   }
 }
 
+export const createBar = (userId, songId, sectionId, lastBarOrder) => {
+  return dispatch => {
+    axios.post(`/api/users/bar`, {sectionId, lastBarOrder})
+    .then(() =>
+    dispatch(fetchSong(userId, songId)))
+    .catch(err => console.log(err))
+  }
+}
+
 /**
  * REDUCER
  */
