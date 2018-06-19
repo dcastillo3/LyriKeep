@@ -1,13 +1,23 @@
 /* ------------ Font Imports ------------ */
-
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 /* ------------ Default Styles ------------ */
+html {
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  background: #efefef;
+  color: #000;
+  margin: 0;
 }
 
 a {
   text-decoration: none;
+  color: #000;
 }
 
 label {
@@ -24,39 +34,502 @@ form div {
   display: inline-block;
 }
 
+button:focus {
+  outline: none;
+}
+
+input:focus {
+  outline-offset: 0;
+  outline: #2589de auto 3px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-container {
+  flex: auto;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+
+/* ------------ Login & Signup Forms ------------ */
+.auth-form {
+  background: #fbfbfb;
+  padding: 0px 10px;
+  display: flex;
+  align-items: baseline;
+}
+
+.auth-form button {
+  border: none;
+  background: #424242;
+  color: #fff;
+  padding: 7px 11px;
+  text-transform: uppercase;
+  font-size: 10px;
+  width: 100px;
+  transition: .3s ease-in-out;
+}
+
+.auth-form button:hover {
+  background: #e21111;
+}
+
+.auth-form .button-google {
+  margin-left: 20px;
+  width: 110px;
+}
+
+.auth-form img.google-icon {
+  height: 10px;
+  margin-left: 5px;
+  position: relative;
+  top: 1px;
+}
+
+
+/* ------------ Header ------------ */
+.header {
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 20px;
+  background: #000;
+}
+
+.header a {
+  color: #fff;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  margin-right: auto;
+}
+
+.header-title {
+  margin: 0;
+}
+
+
+/* ------------ Home (Landing) ------------ */
+.home-landing-container {
+  position: relative;
+}
+
+.home-text-container {
+  max-width: 605px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+}
+
+.home-title {
+  font-size: 7em;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 132px;
+  letter-spacing: 1px;
+}
+
+.home-description {
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.home-signup-button {
+  padding: 15px 30px;
+  background: #fff;
+  color: #000;
+  text-transform: uppercase;
+  margin-top: 50px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: 0.3s ease-in-out;
+}
+.home-signup-button:hover {
+  background: #e21111;
+  color: #fff;
+}
+
+.home-image-overlay {
+  background: rgba(0, 0, 0, 0.45);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-bg-image {
+  background: url(../images/landing.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: -300px;
+  height: 80vh;
+  width: 100vw;
+}
 
 /* ------------ User Home ------------ */
+.user-home .user-title {
+  
+}
+
 .user-home .user-song-image {
-  width: 100px;
-  height: 100px;
-  background-size: contain;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #c5c5c5;
+  padding: 1px;
+  background-size: 50%;
+  background-position: center;
   background-repeat: no-repeat;
+}
+
+.user-home .user-song-container {
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  border-bottom: 1px solid #b7b7b7;
+  display: flex;
+  transition: .3s ease-in-out;
+}
+
+.user-home .user-song-container:hover {
+  background: #e9e5ff;
+}
+
+.user-home .user-song-container > a {
+  color: #000;
+}
+
+.user-home .user-meta-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 20px;
+}
+
+.user-home .user-songs-tags .user-songs-tags-title {
+
+}
+
+span.user-song-tags-title {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .9px;
+}
+
+.user-home .user-song-tags {
+  margin-left: auto;
+  font-style: italic;
+  font-size: 11px;
+  letter-spacing: .7px;
+  font-weight: 300;
+}
+
+.user-home .user-song-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .7px;
+}
+
+.user-home .user-song-description {
+  font-size: 11px;
+  letter-spacing: .7px;
+  font-weight: 300;
+  color: #424242;
+}
+
+.user-home .user-add-song-form-container {
+  width: 100%;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.user-home .user-add-song-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-home .user-add-song-form label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .7px;
+  margin-right: 10px;
+}
+
+.user-home .user-add-song-input {
+  width: 12.8%;
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 13px;
+  border: 1px solid #424242;
+}
+
+.user-home .user-add-song {
+  border: none;
+  background: #424242;
+  color: #fff;
+  padding: 7px 11px;
+  text-transform: uppercase;
+  font-size: 10px;
+  width: 100px;
+  transition: .3s ease-in-out;
+}
+
+.user-home .user-add-song:hover {
+  color: #fff;
+  background: #e21111;
 }
 
 /* ------------ Single Song ------------ */
 .single-song .user-song-image {
   width: 100px;
   height: 100px;
-  background-size: contain;
+  background-size: 50%;
+  background-position: center;
   background-repeat: no-repeat;
+  border: 1px solid #c5c5c5;
 }
 
-/* ------------ Single Song ------------ */
-.editor {
+.single-song .user-song-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 20px;
+  border-bottom: 5px solid #e21111;
+}
+
+.single-song .user-song-title {
+  font-weight: 600;
+  letter-spacing: .7px;
+}
+
+.single-song .user-song-description {
+  font-size: 13px;
+  letter-spacing: .7px;
+  font-weight: 300;
+  color: #424242;
+}
+
+.single-song span.user-song-tags-title {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .9px;
+}
+
+.single-song .user-song-tags {
+  margin-left: auto;
+  font-size: 13px;
+  letter-spacing: .7px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.single-song .user-meta-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.single-song .editor {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.bar {
+.single-song .user-song-container-left {
+  width: 79%;
+}
+
+.single-song .user-song-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+}
+
+.single-song .user-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-song .user-section-name {
+  padding: 10px;
+  background: #2589de;
+  margin-top: 20px;
+  color: #fff;
+}
+
+.single-song .user-bar-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.beat {
-  width: calc(25% - 20px);
-  margin: 10px;
-  background: #efefef;
+.single-song .user-add-section-form-container {
+  width: 100%;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.single-song .user-add-section-input {
+  width: 12.8%;
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 13px;
+  border: 1px solid #424242;
+}
+
+.single-song .user-bar-name {
+  width: 30px;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.single-song .user-bar {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 8px 10px;
+  background: #ffffff;
+  width: 92.6%;
+  padding: 20px;
+  border-bottom: 1px solid #b7b7b7;
+  position: relative;
+}
+
+.single-song .user-beat {
+  background: #f5f5f5;
+  width: calc(70% - 10px);
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 0px;
+  font-size: 13px;
+}
+
+.single-song .user-section-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-song .user-beat-container {
+  flex: 25%;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-song .user-add-bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  padding: 2px 3px 4px 2px;
+  margin: 20px 10px;
+  font-weight: 100;
+  line-height: 11px;
+  font-size: 22px;
+  color: #909090;
+  text-align: center;
+  transition: .3s ease-in-out;
+  border: 1px solid;
+}
+
+.single-song .user-add-section {
+  border: none;
+  background: #424242;
+  color: #fff;
+  padding: 7px 11px;
+  text-transform: uppercase;
+  font-size: 10px;
+  width: 100px;
+  transition: .3s ease-in-out;
+}
+
+.single-song .user-add-section:hover {
+  color: #fff;
+  background: #e21111;
+}
+
+.single-song .user-add-bar:hover {
+  color: #fff;
+  background: #e21111;
+}
+
+.single-song button.user-beat-button {
+  border: none;
+  background: #424242;
+  color: #fff;
+  padding: 7px 11px;
+  text-transform: uppercase;
+  font-size: 10px;
+  width: 100px;
+  transition: .3s ease-in-out;
+}
+
+.single-song button.user-beat-button:hover {
+  background: #e21111;
+}
+
+.single-song .lyric-suggestions-container {
+  width: 180px;
+  padding: 10px;
+  background: #fff;
+  font-size: 12px;
+  border-left: solid 1px #b7b7b7;
+  margin: 20px 0px 0px 20px;
+  flex: auto;
+}
+
+.single-song .lyric-suggestions-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .7px;
+  padding: 5px;
+}
+
+.single-song .lyric-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.single-song .lyric-suggestion {
+  margin: 2px 5px;
+  font-size: 11px;
+  letter-spacing: .7px;
+  font-weight: 300;
+  color: #424242;
+}
+
+
+/* ------------ Footer ------------ */
+.footer {
+  background: #ffd7a5;
+  min-height: 150px;
 }

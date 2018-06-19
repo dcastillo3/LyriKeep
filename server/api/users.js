@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Beat} = require('../db/models')
+const {User, Beat, Song} = require('../db/models')
 module.exports = router
 
 //Get all users
@@ -12,6 +12,27 @@ router.get('/', (req, res, next) => {
   })
     .then(users => res.json(users))
     .catch(next)
+})
+
+//Route to create Song for user
+router.post('/:userId/song', (req, res, next) => {
+  let userId = req.params.userId
+  let order = req.body.lastSongOrder
+  let title = req.body.title
+  let description = req.body.description
+  let tags = req.body.tags
+
+  return Song.create({
+    userId,
+    order,
+    description,
+    tags,
+    title
+  })
+  .then(createdSong => {
+    res.json(createdSong.dataValues)
+  })
+  .catch(next)
 })
 
 //Get all users songs
@@ -36,8 +57,7 @@ router.get('/:userId/songs/:songId', (req, res, next) => {
 //Api for routes
 router.put('/lyric/:beatId', (req, res, next) => {
   let beatId = req.params.beatId
-  console.log('**********', req.body)
-  let lyric = req.body.lyric
+  let lyric = req.body.lyrics
 
   Beat.findById(beatId)
   .then(foundBeat => {
@@ -47,6 +67,31 @@ router.put('/lyric/:beatId', (req, res, next) => {
   })
   .then(updatedBeat => {
     res.json(updatedBeat.dataValues)
+  })
+  .catch(next)
+})
+
+//Api for creating sections
+router.post('/section', (req, res, next) => {
+  let songId = req.body.songId
+  let order = req.body.lastSectionOrder
+  let name = req.body.name
+
+  User.createSection(songId, order, name)
+  .then(() => {
+    res.sendStatus(200)
+  })
+  .catch(next)
+})
+
+//Api for creating bars
+router.post('/bar', (req, res, next) => {
+  let sectionId = req.body.sectionId
+  let order = req.body.lastBarOrder
+
+  User.createBar(sectionId, order)
+  .then(() => {
+    res.sendStatus(200)
   })
   .catch(next)
 })

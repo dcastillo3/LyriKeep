@@ -29,6 +29,17 @@ export const fetchSongs = (userId) =>
     dispatch(getSongs(res.data)))
   .catch(err => console.log(err))
 
+export const createSong = (userId, lastSongOrder, title, description, tags, history) => {
+  return dispatch => {
+    axios.post(`/api/users/${userId}/song`, {lastSongOrder, title, description, tags})
+    .then((newSong) => {
+      dispatch(fetchSongs(userId))
+      history.push(`/user/song/${newSong.data.id}`)
+    })
+    .catch(err => console.log(err))
+  }
+  }
+
 /**
  * REDUCER
  */

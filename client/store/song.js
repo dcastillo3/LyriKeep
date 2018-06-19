@@ -29,12 +29,30 @@ export const fetchSong = (userId, songId) =>
     dispatch(getSong(res.data)))
   .catch(err => console.log(err))
 
-export const beatUpdate = (userId, beatId, songId, lyric) => {
+export const beatUpdate = (userId, beatId, songId, lyrics) => {
   return dispatch => {
-    axios.put(`/api/users/lyric/${beatId}`, {lyric})
+    axios.put(`/api/users/lyric/${beatId}`, {lyrics})
       .then(() =>
         dispatch(fetchSong(userId, songId)))
       .catch(err => console.log(err))
+  }
+}
+
+export const createBar = (userId, songId, sectionId, lastBarOrder) => {
+  return dispatch => {
+    axios.post(`/api/users/bar`, {sectionId, lastBarOrder})
+    .then(() =>
+    dispatch(fetchSong(userId, songId)))
+    .catch(err => console.log(err))
+  }
+}
+
+export const createSection = (userId, songId, lastSectionOrder, name) => {
+  return dispatch => {
+    axios.post(`/api/users/section`, {songId, lastSectionOrder, name})
+    .then(() =>
+    dispatch(fetchSong(userId, songId)))
+    .catch(err => console.log(err))
   }
 }
 

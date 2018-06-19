@@ -30,14 +30,19 @@ async function seed () {
     User.create({email: 'admin@email.com', isAdmin: true, password: '123'})
   ])
   const songs = await Promise.all([
-    Song.create({title: 'My Song', description: 'My first song', tags: ['first song', 'hiphop'], userId: 3}),
-    Song.create({title: 'My Other Song', description: 'My second song', tags: ['second song', 'hiphop'], userId: 3})
+    Song.create({order: 1, title: 'Ocean Waves', description: 'My first song', tags: ['first song', 'hiphop'], userId: 3}),
+    Song.create({order: 2, title: 'Lavish Living', description: 'My second song', tags: ['second song', 'hiphop'], userId: 3}),
+    Song.create({order: 3, title: 'Mile Stones', description: 'My third song', tags: ['third song', 'hiphop'], userId: 3}),
+    Song.create({order: 4, title: 'Cash Out', description: 'My fourth song', tags: ['fourth song', 'hiphop'], userId: 3}),
+    Song.create({order: 5, title: 'Smooth Vibes', description: 'My fifth song', tags: ['fifth song', 'hiphop'], userId: 3}),
+    Song.create({order: 6, title: 'Train Ride Home', description: 'My sixth song', tags: ['sixth song', 'hiphop'], userId: 3}),
+    Song.create({order: 7, title: 'Thought Train', description: 'My seventh song', tags: ['seventh song', 'hiphop'], userId: 3}),
+    Song.create({order: 8, title: 'Ringside', description: 'My eighth song', tags: ['eight song', 'hiphop'], userId: 3})
   ])
 
   const sections = await Promise.all([
     Section.create({order: 1, name: 'Verse 1', songId: 1}),
     Section.create({order: 2, name: 'Chorus', songId: 1}),
-    Section.create({order: 3, name: 'Verse 2', songId: 1})
   ])
 
   const bars = await Promise.all([
@@ -66,7 +71,7 @@ async function seed () {
 
     Beat.create({order: 1, lyric: 'Glasses on', barId: 4}),
     Beat.create({order: 2, lyric: 'feeling studious', scheme: 'C', barId: 4}),
-    Beat.create({order: 3, lyric: 'reminiscing on challenges', barId: 4}),
+    Beat.create({order: 3, lyric: 'reminiscing challenges', barId: 4}),
     Beat.create({order: 4, lyric: 'stupidness', scheme: 'C', barId: 4})
   ])
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
