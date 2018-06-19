@@ -54,19 +54,19 @@ async function seed () {
   ])
 
   const beats = await Promise.all([
-    Beat.create({order: 1, lyric: 'Chillin', scheme: 'A', barId: 1}),
+    Beat.create({order: 1, lyric: 'Chilling', scheme: 'A', barId: 1}),
     Beat.create({order: 2, lyric: 'like a villian', scheme: 'A', barId: 1}),
-    Beat.create({order: 3, lyric: 'Im killin', scheme: 'A', barId: 1}),
+    Beat.create({order: 3, lyric: 'Im killing', scheme: 'A', barId: 1}),
     Beat.create({order: 4, lyric: 'these rap villians', scheme: 'A', barId: 1}),
 
-    Beat.create({order: 1, lyric: 'Im makin', barId: 2}),
-    Beat.create({order: 2, lyric: 'a livin', scheme: 'A', barId: 2}),
+    Beat.create({order: 1, lyric: 'Im making', barId: 2}),
+    Beat.create({order: 2, lyric: 'a living', scheme: 'A', barId: 2}),
     Beat.create({order: 3, lyric: 'with no limits', barId: 2}),
     Beat.create({order: 4, lyric: 'or ceilings', scheme: 'A', barId: 2}),
 
     Beat.create({order: 1, lyric: 'Progression', scheme: 'B', barId: 3}),
     Beat.create({order: 2, lyric: 'is not a suggestion', scheme: 'B', barId: 3}),
-    Beat.create({order: 3, lyric: 'makin moves', barId: 3}),
+    Beat.create({order: 3, lyric: 'making moves', barId: 3}),
     Beat.create({order: 4, lyric: 'with learned lessons', scheme: 'B', barId: 3}),
 
     Beat.create({order: 1, lyric: 'Glasses on', barId: 4}),
