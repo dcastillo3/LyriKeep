@@ -64,6 +64,42 @@ button:hover {
 }
 
 
+/* ------------ Login & Signup Forms ------------ */
+.auth-form {
+  background: #fbfbfb;
+  padding: 0px 10px;
+  display: flex;
+  align-items: baseline;
+}
+
+.auth-form button {
+  border: none;
+  background: #424242;
+  color: #fff;
+  padding: 7px 11px;
+  text-transform: uppercase;
+  font-size: 10px;
+  width: 100px;
+  transition: .3s ease-in-out;
+}
+
+.auth-form button:hover {
+  background: #e21111;
+}
+
+.auth-form .button-google {
+  margin-left: 20px;
+  width: 110px;
+}
+
+.auth-form img.google-icon {
+  height: 10px;
+  margin-left: 5px;
+  position: relative;
+  top: 1px;
+}
+
+
 /* ------------ Header ------------ */
 .header {
   display: flex;
@@ -225,6 +261,51 @@ span.user-song-tags-title {
   color: #424242;
 }
 
+.user-home .user-add-song-form-container {
+  width: 100%;
+  text-align: right;
+  margin-top: 20px;
+}
+
+.user-home .user-add-song-form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-home .user-add-song-form label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .7px;
+  margin-right: 10px;
+}
+
+.user-home .user-add-song-input {
+  width: 12.8%;
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 13px;
+  border: 1px solid #424242;
+}
+
+.user-home .user-add-song {
+  border: none;
+  background: #424242;
+  color: #fff;
+  padding: 7px 11px;
+  text-transform: uppercase;
+  font-size: 10px;
+  width: 100px;
+  transition: .3s ease-in-out;
+}
+
+.user-home .user-add-song:hover {
+  color: #fff;
+  background: #e21111;
+}
+
 /* ------------ Single Song ------------ */
 .single-song .user-song-image {
   width: 100px;
@@ -235,7 +316,6 @@ span.user-song-tags-title {
   border: 1px solid #c5c5c5;
 }
 
-/* ------------ Single Song ------------ */
 .single-song .user-song-info {
   display: flex;
   flex-direction: row;
@@ -453,11 +533,3 @@ span.user-song-tags-title {
   background: #ffd7a5;
   min-height: 150px;
 }
-
-/* .footer a {
-  color: #000;
-  font-size: 11px;
-  letter-spacing: 1px;
-  font-weight: 400;
-  margin-right: auto;
-} */

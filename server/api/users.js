@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, Beat} = require('../db/models')
+const {User, Beat, Song} = require('../db/models')
 module.exports = router
 
 //Get all users
@@ -12,6 +12,27 @@ router.get('/', (req, res, next) => {
   })
     .then(users => res.json(users))
     .catch(next)
+})
+
+//Route to create Song for user
+router.post('/:userId/song', (req, res, next) => {
+  let userId = req.params.userId
+  let order = req.body.lastSongOrder
+  let title = req.body.title
+  let description = req.body.description
+  let tags = req.body.tags
+
+  return Song.create({
+    userId,
+    order,
+    description,
+    tags,
+    title
+  })
+  .then(createdSong => {
+    res.json(createdSong.dataValues)
+  })
+  .catch(next)
 })
 
 //Get all users songs

@@ -30,14 +30,14 @@ async function seed () {
     User.create({email: 'admin@email.com', isAdmin: true, password: '123'})
   ])
   const songs = await Promise.all([
-    Song.create({title: 'Ocean Waves', description: 'My first song', tags: ['first song', 'hiphop'], userId: 3}),
-    Song.create({title: 'Lavish Living', description: 'My second song', tags: ['second song', 'hiphop'], userId: 3}),
-    Song.create({title: 'Mile Stones', description: 'My third song', tags: ['third song', 'hiphop'], userId: 3}),
-    Song.create({title: 'Cash Out', description: 'My fourth song', tags: ['fourth song', 'hiphop'], userId: 3}),
-    Song.create({title: 'Smooth Vibes', description: 'My fifth song', tags: ['fifth song', 'hiphop'], userId: 3}),
-    Song.create({title: 'Train Ride Home', description: 'My sixth song', tags: ['sixth song', 'hiphop'], userId: 3}),
-    Song.create({title: 'Thought Train', description: 'My seventh song', tags: ['seventh song', 'hiphop'], userId: 3}),
-    Song.create({title: 'Ringside', description: 'My eighth song', tags: ['eight song', 'hiphop'], userId: 3})
+    Song.create({order: 1, title: 'Ocean Waves', description: 'My first song', tags: ['first song', 'hiphop'], userId: 3}),
+    Song.create({order: 2, title: 'Lavish Living', description: 'My second song', tags: ['second song', 'hiphop'], userId: 3}),
+    Song.create({order: 3, title: 'Mile Stones', description: 'My third song', tags: ['third song', 'hiphop'], userId: 3}),
+    Song.create({order: 4, title: 'Cash Out', description: 'My fourth song', tags: ['fourth song', 'hiphop'], userId: 3}),
+    Song.create({order: 5, title: 'Smooth Vibes', description: 'My fifth song', tags: ['fifth song', 'hiphop'], userId: 3}),
+    Song.create({order: 6, title: 'Train Ride Home', description: 'My sixth song', tags: ['sixth song', 'hiphop'], userId: 3}),
+    Song.create({order: 7, title: 'Thought Train', description: 'My seventh song', tags: ['seventh song', 'hiphop'], userId: 3}),
+    Song.create({order: 8, title: 'Ringside', description: 'My eighth song', tags: ['eight song', 'hiphop'], userId: 3})
   ])
 
   const sections = await Promise.all([

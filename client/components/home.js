@@ -26,7 +26,7 @@ class Home extends Component {
                     <div className="home-description">Join our community of musicians, poets, rappers and various lyrical artists.<br />Organize your content and speak your creativity into existence.</div>
                     {isLoggedIn ? 
                       <Link className="home-signup-button" to="/user">View My Songs</Link> :
-                      <Link className="home-signup-button" to="/login">Sign Up For Free</Link> 
+                      <Link className="home-signup-button" to="/signup">Sign Up For Free</Link> 
                       }
                 </div>
             </div>

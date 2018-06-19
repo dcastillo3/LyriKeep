@@ -2,6 +2,10 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Song = db.define('song', {
+  order: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
   title: {
     type: Sequelize.STRING,
     allowNull: false
