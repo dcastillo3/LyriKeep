@@ -47,6 +47,15 @@ export const createBar = (userId, songId, sectionId, lastBarOrder) => {
   }
 }
 
+export const createSection = (userId, songId, lastSectionOrder, name) => {
+  return dispatch => {
+    axios.post(`/api/users/section`, {songId, lastSectionOrder, name})
+    .then(() =>
+    dispatch(fetchSong(userId, songId)))
+    .catch(err => console.log(err))
+  }
+}
+
 /**
  * REDUCER
  */

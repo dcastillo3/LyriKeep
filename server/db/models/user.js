@@ -89,11 +89,24 @@ User.createBar = function (sectionId, order) {
       for (let i = idx; i <= 4; i++) {
         Beat.create({
           scheme: 'none',
-          order: idx,
+          order: i,
           barId
         })
       }
     })
+}
+
+User.createSection = function (songId, order, name) {
+  return Section.create({
+    songId,
+    order,
+    name
+  })
+  .then(createdSection => {
+    let sectionId = createdSection.dataValues.id
+    let barOrder = 1
+    return User.createBar(sectionId, barOrder)
+  })
 }
 
 User.generateSalt = function () {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
-import {fetchSong, beatUpdate, fetchSuggestions, getSuggestions, createBar} from '../../store'
+import {fetchSong, beatUpdate, fetchSuggestions, getSuggestions, createBar, createSection} from '../../store'
 
 /**
  * COMPONENT
@@ -27,6 +27,7 @@ class SingleSong extends Component {
   const suggestions = this.props.suggestions
   const getSuggestions = this.props.getSuggestions
   const addBar = this.props.addBar
+  const addSection = this.props.addSection
 
   let songImage = {
     backgroundImage: `url('/images/${song.image}')`
@@ -43,8 +44,9 @@ class SingleSong extends Component {
               <div className="user-song-tags"><span className="user-song-tags-title">Tags: </span>{song.tags}</div>
             </div>
             <div className="user-song-container">
+            <div className="user-song-container-left">
             <div className="user-song">
-                {song.sections && song.sections.sort((section1, section2) => section1.order - section2.order).map(section => {
+                {song.sections && song.sections.sort((section1, section2) => section1.order - section2.order).map((section, index) => {
                     return (
                     <div key={section.id} className="user-section-container">
                       <div className="user-section-name">{section.name}</div>
@@ -58,7 +60,7 @@ class SingleSong extends Component {
                                             let beatId = beat.id;
                                             return (
                                                 <div key={beat.id} className="user-beat-container">
-                                                  <input onChange={(event) => beatChange(userId, beatId, songId, event)} className={`user-beat beat-${beat.id}`} name="beat" order={beat.order} value={beat.lyric} />
+                                                  <input onChange={(event) => beatChange(userId, beatId, songId, event)} className={`user-beat beat-${beat.id}`} name="beat" order={beat.order} value={beat.lyric || ''} />
                                                   <button onClick={(event) => getSuggestions(event)} type="submit" className="user-beat-button" name={beat.lyric}>Suggestions</button>
                                                 </div>
                                             )
@@ -68,10 +70,18 @@ class SingleSong extends Component {
                                   </div>
                                 )
                             })}
+                            
                         </div>
                       </div>
                     )
                 })}
+            </div>
+            <div className="user-add-section-form-container">
+              <form onSubmit={(event) => addSection(userId, songId, song.sections.length + 1, event)}>
+                <input className="user-add-section-input" name="sectionName" />
+                <button type="submit" className="user-add-section">Add Section</button>
+              </form>
+            </div>
             </div>
             <div className="lyric-suggestions-container">
               <div className="lyric-suggestions-title">Suggestions</div>
@@ -119,8 +129,12 @@ const mapDispatch = (dispatch) => {
       dispatch(getSuggestions())
     },
     addBar(userId, songId, sectionId, lastBarOrder) {
-      console.log(lastBarOrder)
       dispatch(createBar(userId, songId, sectionId, lastBarOrder))
+    },
+    addSection(userId, songId, lastSectionOrder, event) {
+      event.preventDefault();
+      let name = event.target.sectionName.value
+      dispatch(createSection(userId, songId, lastSectionOrder, name))
     }
   }
 }
