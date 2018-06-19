@@ -5,6 +5,8 @@ import {logout} from '../store'
 
 const Footer = ({ handleClick, isLoggedIn }) => (
   <div className="footer">
+    <div className="footer-copyright">Copyright 2018 LyriKeep</div>
+    <div className="footer-content">LyriKeep and all services offered are copright and content protected. Use our imagination to create content like never before. Organized structure and lyric tools bring you a faster more efficient process. Let your inspiration run wild!</div>
     <nav>
       {isLoggedIn ? (
         <div>

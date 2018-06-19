@@ -138,6 +138,7 @@ button:hover {
   align-items: center;
   text-align: center;
   color: #fff;
+  padding: 20px;
 }
 
 .home-title {
@@ -363,6 +364,22 @@ span.user-song-tags-title {
   flex-wrap: wrap;
 }
 
+@media (max-width: 1147px) {
+  .single-song .user-song-container-left {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-title {
+    font-size: 2em !important;
+    font-weight: 600;
+    font-style: italic;
+    line-height: normal !important;
+    letter-spacing: 1px;
+}
+}
+
 .single-song .user-song-container-left {
   width: 79%;
 }
@@ -532,4 +549,31 @@ span.user-song-tags-title {
 .footer {
   background: #ffd7a5;
   min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.footer nav {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.footer .footer-copyright {
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: .9px;
+}
+
+.footer .footer-content {
+  font-size: 11px;
+  letter-spacing: .7px;
+  font-weight: 300;
+  color: #424242;
+  max-width: 800px;
 }
